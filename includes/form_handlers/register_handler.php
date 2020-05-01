@@ -82,6 +82,11 @@ if (isset($_POST['register_button'])) :
         $password = md5($password);
         //Kullanıcı Adı Üretme
         $username = mb_strtolower($fname . "_" . $lname, 'utf8');
+        //Türkçe karakter temizlik
+        $search = array('Ç','ç','Ğ','ğ','ı','İ','Ö','ö','Ş','ş','Ü','ü',' ');
+        $replace = array('c','c','g','g','i','i','o','o','s','s','u','u','-');
+
+        $username = str_replace($search,$replace,$username);
         //Kayıtlı kullanıcı varmı kontrol
         $check_username_query = mysqli_query($con, "select username from users where username='$username'");
 
