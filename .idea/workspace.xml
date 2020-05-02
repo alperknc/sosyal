@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a81bd6eb-5803-46cd-92a5-8f7cb1be00c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/icons/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/js/jquery-3.5.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/classes/Post - Kopya.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/classes/User - Kopya.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/handlers/ajax_load_posts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/includes/header - Kopya.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index - Kopya.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comment_frame.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/like.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_closed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/classes/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/form_handlers/register_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/form_handlers/register_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,7 @@
       <workItem from="1588302194633" duration="5527000" />
       <workItem from="1588372142678" duration="5745000" />
       <workItem from="1588358413717" duration="1331000" />
-      <workItem from="1588427946126" duration="13874000" />
+      <workItem from="1588427946126" duration="21250000" />
     </task>
     <servers />
   </component>
@@ -122,10 +117,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="1020" y="247" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1588376940596" />
-    <state x="1010" y="335" key="NewPhpFileDialog" timestamp="1588358891468">
+    <state x="1010" y="335" key="NewPhpFileDialog" timestamp="1588449760481">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1010" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1588358891468" />
+    <state x="1010" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1588449760481" />
     <state x="555" y="54" key="SettingsEditor" timestamp="1588304415653">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

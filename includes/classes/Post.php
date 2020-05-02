@@ -40,39 +40,6 @@ class Post
         endif;  //Post boş değilse
     }
 
-    /*  public function submitPost($body, $user_to) {
-          $body = strip_tags($body); //removes html tags
-          $body = mysqli_real_escape_string($this->con, $body);
-          $check_empty = preg_replace('/\s+/', '', $body); //Deltes all spaces
-
-          if($check_empty != "") {
-
-
-              //Current date and time
-              $date_added = date("Y-m-d H:i:s");
-              //Get username
-              $added_by = $this->user_obj->getUsername();
-
-              //If user is on own profile, user_to is 'none'
-              if($user_to == $added_by) {
-                  $user_to = "none";
-              }
-
-              //insert post
-              $query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
-              $returned_id = mysqli_insert_id($this->con);
-
-              //Insert notification
-
-              //Update post count for user
-              $num_posts = $this->user_obj->getNumPosts();
-              $num_posts++;
-              $update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
-
-          }
-      }  */
-
-
     public function loadPostsFirends($data, $limit)
     {
         $page = $data['page'];
@@ -113,90 +80,127 @@ class Post
                     continue;
                 endif;
 
-                if ($num_iterations++ < $start)
-                    continue;
+                $user_logged_obj = new User($this->con, $userLoggedIn);
 
-                // 10 gönderi yükleyip dur
-                if ($count > $limit) {
-                    break;
-                }else{
-                    $count++;
+                //Sadece arkadaş postları göster
+                if ($user_logged_obj->isFriend($added_by)) {
+
+                    if ($num_iterations++ < $start)
+                        continue;
+
+                    // 10 gönderi yükleyip dur
+                    if ($count > $limit) {
+                        break;
+                    } else {
+                        $count++;
+                    }
+
+                    $user_details_query = mysqli_query($this->con, "select first_name, last_name, profile_pic from users where username='$added_by'");
+                    $user_row = mysqli_fetch_array($user_details_query);
+                    $first_name = $user_row['first_name'];
+                    $last_name = $user_row['last_name'];
+                    $profile_pic = $user_row['profile_pic'];
+
+                    ?>
+                    <script>
+                        function toggle<?php echo $id; ?>() {
+
+                            var target = $(event.target);
+                            if (!target.is("a")) {
+                                var element = document.getElementById("toggleComment<?php echo $id; ?>");
+
+                                if(element.style.display == "block")
+                                    element.style.display = "none";
+                                else
+                                    element.style.display = "block";
+                            }
+                        }
+
+                    </script>
+                    <?php
+                    $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id='$id'");
+                    $comments_check_num = mysqli_num_rows($comments_check);
+
+                    //Zamanlama
+                    $date_time_now = date("Y-m-d H:i:s");
+                    $start_date = new DateTime($date_time); //Gönderilme saati
+                    $end_date = new DateTime($date_time_now); //Şuanki saat
+                    $interval = $start_date->diff($end_date); //Fark
+                    if ($interval->y >= 1) {
+                        if ($interval == 1)
+                            $time_message = $interval->y . " yıl önce"; //1 yıl önce
+                        else
+                            $time_message = $interval->y . " yul önce"; //1+ yıl önce
+                    } else if ($interval->m >= 1) {
+                        if ($interval->d == 0) {
+                            $days = " önce";
+                        } else if ($interval->d == 1) {
+                            $days = $interval->d . " gün önce";
+                        } else {
+                            $days = $interval->d . " önce";
+                        }
+
+
+                        if ($interval->m == 1) {
+                            $time_message = $interval->m . " ay" . $days;
+                        } else {
+                            $time_message = $interval->m . " ay" . $days;
+                        }
+
+                    } else if ($interval->d >= 1) {
+                        if ($interval->d == 1) {
+                            $time_message = "Dün";
+                        } else {
+                            $time_message = $interval->d . " gün önce";
+                        }
+                    } else if ($interval->h >= 1) {
+                        if ($interval->h == 1) {
+                            $time_message = $interval->h . " saat önce";
+                        } else {
+                            $time_message = $interval->h . " saat önce";
+                        }
+                    } else if ($interval->i >= 1) {
+                        if ($interval->i == 1) {
+                            $time_message = $interval->i . " dakika önce";
+                        } else {
+                            $time_message = $interval->i . " dakika önce";
+                        }
+                    } else {
+                        if ($interval->s < 30) {
+                            $time_message = "Şimdi";
+                        } else {
+                            $time_message = $interval->s . " saniye önce";
+                        }
+                    }
+
+                    $str .= "<div class='status_post' onClick='javascript:toggle$id()'>
+								<div class='post_profile_pic'>
+									<img src='$profile_pic' width='50'>
+								</div>
+
+								<div class='posted_by' style='color:#ACACAC;'>
+									<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+								</div>
+								<div id='post_body'>
+									$body
+									<br>
+									<br>
+									<br>
+								</div>
+
+								<div class='newsfeedPostOptions'>
+									Yorumlar($comments_check_num)&nbsp;&nbsp;&nbsp;
+									<!-- like gelecek -->
+									
+								</div>
+
+							</div>
+							<div class='post_comment' id='toggleComment$id' style='display:none;'>
+								<iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
+							</div>
+							<hr>";
+
                 }
-
-                $user_details_query = mysqli_query($this->con, "select first_name, last_name, profile_pic from users where username='$added_by'");
-                $user_row = mysqli_fetch_array($user_details_query);
-                $first_name = $user_row['first_name'];
-                $last_name = $user_row['last_name'];
-                $profile_pic = $user_row['profile_pic'];
-
-                //Timeframe
-                $date_time_now = date("Y-m-d H:i:s");
-                $start_date = new DateTime($date_time); //Gönderilme saati
-                $end_date = new DateTime($date_time_now); //Şuanki saat
-                $interval = $start_date->diff($end_date); //Fark
-                if ($interval->y >= 1) {
-                    if ($interval == 1)
-                        $time_message = $interval->y . " yıl önce"; //1 yıl önce
-                    else
-                        $time_message = $interval->y . " yul önce"; //1+ yıl önce
-                } else if ($interval->m >= 1) {
-                    if ($interval->d == 0) {
-                        $days = " önce";
-                    } else if ($interval->d == 1) {
-                        $days = $interval->d . " gün önce";
-                    } else {
-                        $days = $interval->d . " önce";
-                    }
-
-
-                    if ($interval->m == 1) {
-                        $time_message = $interval->m . " ay" . $days;
-                    } else {
-                        $time_message = $interval->m . " ay" . $days;
-                    }
-
-                } else if ($interval->d >= 1) {
-                    if ($interval->d == 1) {
-                        $time_message = "Dün";
-                    } else {
-                        $time_message = $interval->d . " gün önce";
-                    }
-                } else if ($interval->h >= 1) {
-                    if ($interval->h == 1) {
-                        $time_message = $interval->h . " saat önce";
-                    } else {
-                        $time_message = $interval->h . " saat önce";
-                    }
-                } else if ($interval->i >= 1) {
-                    if ($interval->i == 1) {
-                        $time_message = $interval->i . " dakika önce";
-                    } else {
-                        $time_message = $interval->i . " dakika önce";
-                    }
-                } else {
-                    if ($interval->s < 30) {
-                        $time_message = "Şimdi";
-                    } else {
-                        $time_message = $interval->s . " saniye önce";
-                    }
-                }
-
-                $str .= "<div class='status_post'>
-                                    <div class='post_profile_pic'>
-                                        <img src='$profile_pic' width='50'>
-                                    </div>
-    
-                                    <div class='posted_by' style='color:#ACACAC;'>
-                                        <a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
-                                    </div>
-                                    <div id='post_body'>
-                                        $body
-                                        <br>
-                                    </div>
-    
-                                </div>
-                                <hr>";
-
 
             endwhile;
 
