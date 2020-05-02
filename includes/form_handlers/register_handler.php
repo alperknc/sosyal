@@ -102,11 +102,29 @@ if (isset($_POST['register_button'])) :
         endif;
 
         //Profil fotoğrafı
-        $rand = rand(1,2);
+        $rand = rand(1,11);
         if ($rand == 1) :
             $profile_pic = "assets/images/profile_pics/default/head_carrot.png";
         elseif ($rand == 2) :
             $profile_pic = "assets/images/profile_pics/default/head_sun_flower.png";
+        elseif ($rand == 3) :
+            $profile_pic = "assets/images/profile_pics/default/head_alizarin.png";
+        elseif ($rand == 4) :
+            $profile_pic = "assets/images/profile_pics/default/head_amethyst.png";
+        elseif ($rand == 5) :
+            $profile_pic = "assets/images/profile_pics/default/head_belize_hole.png";
+        elseif ($rand == 6) :
+            $profile_pic = "assets/images/profile_pics/default/head_deep_blue.png";
+        elseif ($rand == 7) :
+            $profile_pic = "assets/images/profile_pics/default/head_emerald.png";
+        elseif ($rand == 8) :
+            $profile_pic = "assets/images/profile_pics/default/head_green_sea.png";
+        elseif ($rand == 9) :
+            $profile_pic = "assets/images/profile_pics/default/head_nephritis.png";
+        elseif ($rand == 10) :
+            $profile_pic = "assets/images/profile_pics/default/head_pete_river.png";
+        elseif ($rand == 11) :
+            $profile_pic = "assets/images/profile_pics/default/head_pomegranate.png";
         endif; // Rasgele profil foto
 
         $query = mysqli_query($con, "insert into users values ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
