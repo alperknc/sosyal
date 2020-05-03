@@ -143,7 +143,7 @@ if($count != 0) {
         </div>
         <?php
 
-    }
+    } //while son
 } //yorum listeleme son
 else {
     echo "<center><br><br>Yorum yok!</center>";

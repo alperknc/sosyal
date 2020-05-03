@@ -2,14 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a81bd6eb-5803-46cd-92a5-8f7cb1be00c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/comment_frame.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/like.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user_closed.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/jquery.Jcrop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/bootbox.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/jcrop_bits.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/jquery.Jcrop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/jquery.Jcrop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/form_handlers/delete_post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/handlers/ajax_load_profile_posts.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/includes/handlers/ajax_submit_profile_post.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requests.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/register_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/register_style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment_frame.php" beforeDir="false" afterPath="$PROJECT_DIR$/comment_frame.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/classes/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/like.php" beforeDir="false" afterPath="$PROJECT_DIR$/like.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_closed.php" beforeDir="false" afterPath="$PROJECT_DIR$/user_closed.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +89,9 @@
       <workItem from="1588302194633" duration="5527000" />
       <workItem from="1588372142678" duration="5745000" />
       <workItem from="1588358413717" duration="1331000" />
-      <workItem from="1588427946126" duration="21250000" />
+      <workItem from="1588427946126" duration="21748000" />
+      <workItem from="1588503492239" duration="7181000" />
+      <workItem from="1588522419342" duration="6796000" />
     </task>
     <servers />
   </component>
@@ -105,10 +122,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="572" y="67" key="#Servers/0.0.1536.824@0.0.1536.824" timestamp="1583351215816" />
-    <state x="447" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583351222491">
+    <state x="447" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588527380825">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="447" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583351222491" />
+    <state x="447" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588527380825" />
     <state x="365" y="188" key="FileChooserDialogImpl" timestamp="1588304410150">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -129,9 +146,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="240" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588302198261" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1588443172218">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1588524761816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588443172218" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588524761816" />
   </component>
 </project>

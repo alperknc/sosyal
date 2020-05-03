@@ -1,47 +1,53 @@
 @font-face {
-    font-family: Bellota-LightItalic;
-    src: url("../fonts/Bellota-LightItalic.otf");
+    font-family: 'Bellota-LightItalic';
+    src: url('../fonts/Bellota-LightItalic.otf');
 }
 @font-face {
-    font-family: Bellota-BoldItalic;
-    src: url("../fonts/Bellota-BoldItalic.otf");
+    font-family: 'Bellota-BoldItalic';
+    src: url('../fonts/Bellota-BoldItalic.otf');
 }
 
 body {
     line-height: 17px;
+    background-color: #E6EAE8;
+}
+
+a {
+    color: #20AAE5;
+    text-decoration: none;
 }
 
 .top_bar {
     width: 100%;
     min-width: 1050px;
-    height: 50px;
-    background-color: #1C8B89;
-    border-bottom: 0.25em solid #117a8b;
+    height: 40px;
+    background-color: #0f6674;
+    border-bottom: 0.25em solid #1C8B89;
     margin: 0 0 10px 0;
     display: inline-flex;
     position: fixed;
     z-index: 10;
 }
 
-.logo a {
+.logo a{
     font-family: 'Bellota-BoldItalic', sans-serif;
     margin-left: 10px;
     font-size: 30px;
     position: relative;
+    top: 9px;
+    text-shadow: #1C8B89 0.5px 0.5px 0px;
     color: #fff;
-    text-shadow: #73B6E2 0.5px 0.5px 0px;
 }
 
-.logo a:hover {
+a:hover {
     text-decoration: none;
-    color: #fff
 }
 
 nav {
     float: right;
     right: 1px;
     position: absolute;
-    margin: 6px;
+    margin: 10px;
 }
 
 nav a{
@@ -144,6 +150,7 @@ textarea:focus {
     font-size: 15px;
     padding: 0px 5px;
     min-height: 75px;
+    cursor:pointer;
 }
 
 .post_profile_pic {
@@ -282,6 +289,51 @@ textarea:focus {
     border: none;
     color: #fff;
 }
+
+#accept_button {
+    width: 20%;
+    height: 28px;
+    border-radius: 5px;
+    margin: 5px;
+    border: none;
+    color: #fff;
+    background-color: #2ecc71;
+}
+#ignore_button {
+    width: 20%;
+    height: 28px;
+    border-radius: 5px;
+    margin: 5px;
+    border: none;
+    color: #fff;
+    background-color: #e74c3c;
+}
+
+.delete_button {
+    height: 22px;
+    width: 22px;
+    padding: 0;
+    float: right;
+    border-radius: 4px;
+    right: -15px;
+    position: relative;
+}
+
+.profile_main_column {
+    min-width: 675px;
+    float: left;
+    width: 70%;
+    z-index: -1;
+
+}
+
+.profile_info_bottom {
+    margin: 10px 0 0 7px;
+
+}
+
+
+
 
 
 
