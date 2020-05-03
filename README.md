@@ -1,10 +1,10 @@
 # sosyal
 
-Kayıt Giriş
-Gönderi
-  Paylaşım
-  Yorum
-  Beğeni
-Profil
-  Arkadaş Ekleme, Çıkarma
-  Profile yazma
+Kayıt Giriş <br>
+Gönderi <br>
+  -Paylaşım <br>
+  -Yorum <br>
+  -Beğeni <br>
+Profil <br>
+  -Arkadaş Ekleme, Çıkarma <br>
+  -Profile yazma <br>
