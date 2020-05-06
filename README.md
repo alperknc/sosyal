@@ -7,4 +7,5 @@ Gönderi <br>
   -Beğeni <br>
 Profil <br>
   -Arkadaş Ekleme, Çıkarma <br>
-  -Profile yazma <br>
+  -Profile gönderi ekleme <br>
+  -Kullanıcılar arası mesajlaşma<br>
