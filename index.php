@@ -1,7 +1,5 @@
 <?php
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
 
 
 if(isset($_POST['post'])){
@@ -11,6 +9,8 @@ if(isset($_POST['post'])){
 
 
 ?>
+
+
 <div class="user_details column">
     <a href="<?php echo $userLoggedIn; ?>">  <img src="<?php echo $user['profile_pic']; ?>"> </a>
 
@@ -37,8 +37,9 @@ if(isset($_POST['post'])){
     </form>
 
 
-
     <div class="posts_area"></div>
+
+
     <img id="loading" src="assets/images/icons/loading.gif">
 
 </div>
@@ -97,9 +98,6 @@ if(isset($_POST['post'])){
     });
 
 </script>
-
-
-
 
 
 

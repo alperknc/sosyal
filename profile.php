@@ -1,7 +1,5 @@
-<?php 
+<?php
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
 
 if(isset($_GET['profile_username'])) {
 	$username = $_GET['profile_username'];
@@ -10,7 +8,6 @@ if(isset($_GET['profile_username'])) {
 
 	$num_friends = (substr_count($user_array['friend_array'], ",")) - 1;
 }
-
 
 
 if(isset($_POST['remove_friend'])) {
@@ -35,7 +32,7 @@ if(isset($_POST['respond_request'])) {
 	 	}
 
  	</style>
-	
+
  	<div class="profile_left">
  		<img src="<?php echo $user_array['profile_pic']; ?>">
 
@@ -46,13 +43,13 @@ if(isset($_POST['respond_request'])) {
  		</div>
 
  		<form action="<?php echo $username; ?>" method="POST">
- 			<?php 
- 			$profile_user_obj = new User($con, $username); 
+ 			<?php
+ 			$profile_user_obj = new User($con, $username);
  			if($profile_user_obj->isClosed()) {
  				header("Location: user_closed.php");
  			}
 
- 			$logged_in_user_obj = new User($con, $userLoggedIn); 
+ 			$logged_in_user_obj = new User($con, $userLoggedIn);
 
  			if($userLoggedIn != $username) {
 
@@ -65,16 +62,18 @@ if(isset($_POST['respond_request'])) {
  				else if ($logged_in_user_obj->didSendRequest($username)) {
  					echo '<input type="submit" name="" class="default" value="İstek Gönderildi"><br>';
  				}
- 				else 
+ 				else
  					echo '<input type="submit" name="add_friend" class="success" value="Arkadaş Ekle"><br>';
 
  			}
 
  			?>
  		</form>
- 		<input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Bir şeyler yaz">
+ 		<input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Profiline yaz">
 
-    <?php  
+        <a href="messages.php?u=<?php echo $username ?>"> <input type="submit" class="info" data-target="#post_form" value="Mesaj gönder"> </a>
+
+    <?php
     if($userLoggedIn != $username) {
       echo '<div class="profile_info_bottom">';
         echo $logged_in_user_obj->getMutualFriends($username) . " Ortak arkadaşlar";
@@ -87,12 +86,30 @@ if(isset($_POST['respond_request'])) {
  	</div>
 
 
-	<div class="profile_main_column column">
-		<div class="posts_area"></div>
-    <img id="loading" src="assets/images/icons/loading.gif">
+<div class="profile_main_column column">
+
+    <ul class="nav nav-tabs" role="tablist" id="profileTabs">
+        <li role="presentation" class="active"><a href="#newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Gönderiler</a></li>
+        <li role="presentation"><a href="#messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Mesajlar</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
+            <div class="posts_area"></div>
+            <img id="loading" src="assets/images/icons/loading.gif">
+        </div>
 
 
-	</div>
+        <div role="tabpanel" class="tab-pane fade" id="messages_div">
+
+        </div>
+
+
+    </div>
+
+
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">

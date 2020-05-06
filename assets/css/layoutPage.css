@@ -1,0 +1,56 @@
+/* === Demo code for page layout === */
+
+body{
+  margin:0;
+  padding:0;
+}
+.container {
+  margin-top: 25px;
+}
+.jumbotron h1,.jumbotron h4,.jumbotron h5{
+  color:#fff;
+}
+.jumbotron h1{
+  font-size: 27px;
+}
+.jumbotron h4{
+  font-size: 20px;
+}
+.jumbotron h5{
+  font-size: 16px;
+  color:#18bc9c;
+}
+.row{
+  background: #fafafa;
+  
+}
+.col-sm-2 h5 {
+  margin-top: 90px;
+}
+
+.col-sm-2 {
+  padding: 10px;
+  border-radius: 4px;
+  height: 125px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 1px #000;
+  border: 1px solid skyblue;
+}
+
+.xmas_back{
+   background: radial-gradient(circle at center, skyblue 10%,  #fff 100%);
+}
+
+.close1 {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  cursor: pointer;
+  color: #000000;
+}
+
+/*div [id] {
+  cursor: pointer;
+}*/

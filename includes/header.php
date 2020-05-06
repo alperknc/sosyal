@@ -1,5 +1,8 @@
 <?php
 require 'config/config.php';
+require 'includes/classes/Message.php';
+require 'includes/classes/User.php';
+require 'includes/classes/Post.php';
 
 
 if (isset($_SESSION['username'])) {
@@ -39,6 +42,7 @@ else {
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/preloaders.css">
 
 </head>
 <body>
@@ -55,7 +59,7 @@ else {
         <a href="index.php">
             <i class="fa fa-home"></i>
         </a>
-        <a href="#">
+        <a href="messages.php">
             <i class="fa fa-envelope-o"></i>
         </a>
         <a href="#">
@@ -77,3 +81,18 @@ else {
 
 
 <div class="wrapper">
+
+    <div id="mask">
+        <div id="Circle3"></div>
+    </div>
+
+    <script type="text/javascript">
+        $(window).load(function() { // makes sure the whole site is loaded
+            var preloader=$('#mask div');
+            preloader.fadeOut(); // will first fade out the loading animation
+            $('#mask').delay(350).fadeOut('slow');
+// will fade out the white DIV that covers the website.
+            $('body').delay(350).css({'overflow':'visible'});
+        })
+    </script>
+

@@ -1,109 +1,117 @@
 <?php
-
-class Post
-{
+class Post {
     private $user_obj;
     private $con;
 
-    public function __construct($con, $user)
-    {
+    public function __construct($con, $user){
         $this->con = $con;
         $this->user_obj = new User($con, $user);
     }
 
-    public function submitPost($body, $user_to)
-    {
-        $body = strip_tags($body);
+    public function submitPost($body, $user_to) {
+        $date_added = date("Y-m-d H:i:s");
+        $body = strip_tags($body); //removes html tags
         $body = mysqli_real_escape_string($this->con, $body);
         $check_empty = preg_replace('/\s+/', '', $body); //boşluk silme
 
-        if ($check_empty != "") :
+        if($check_empty != "") {
+
+
+            //Şuanki zaman
             $date_added = date("Y-m-d H:i:s");
+            //username getir
             $added_by = $this->user_obj->getUsername();
 
-            if ($user_to == $added_by) :
+            if($user_to == $added_by) {
                 $user_to = "none";
-            endif; //Kendi profiline yazıyorsa
+            } //Kendi profiline yazıyorsa
 
             // Post ekleme
-            $query = mysqli_query($this->con, "insert into posts values('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
+            $query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
             $returned_id = mysqli_insert_id($this->con);
 
-            // Bildirim
+            //bildirimler
 
-            // Post güncelle
+            // Post sayısı güncelle
             $num_posts = $this->user_obj->getNumPosts();
             $num_posts++;
-            $update_query = mysqli_query($this->con, "update users set num_posts='$num_posts' where username='$added_by'");
+            $update_query = mysqli_query($this->con, "UPDATE users SET num_posts='$num_posts' WHERE username='$added_by'");
 
-
-        endif;  //Post boş değilse
+        }
     }
 
-    public function loadPostsFirends($data, $limit)
-    {
+    public function loadPostsFirends($data, $limit) {
+
         $page = $data['page'];
         $userLoggedIn = $this->user_obj->getUsername();
 
-        if ($page == 1)
+        if($page == 1)
             $start = 0;
         else
-            $start = ($page -1) * $limit;
+            $start = ($page - 1) * $limit;
 
 
         $str = "";
-        $data_query = mysqli_query($this->con, "select * from posts where deleted='no' order by id desc");
+        $data_query = mysqli_query($this->con, "SELECT * FROM posts WHERE deleted='no' ORDER BY id DESC");
 
-        if (mysqli_num_rows($data_query) > 0) {
+        if(mysqli_num_rows($data_query) > 0) {
 
-            $num_iterations = 0;
+
+            $num_iterations = 0; //çekilen post
             $count = 1;
 
-            while ($row = mysqli_fetch_array($data_query)):
+            while($row = mysqli_fetch_array($data_query)) {
                 $id = $row['id'];
                 $body = $row['body'];
                 $added_by = $row['added_by'];
                 $date_time = $row['date_added'];
 
-                //Post birine gönderilmezse
-                if ($row['user_to'] == "none") {
+                //kendi profiline yazıyorsa
+                if($row['user_to'] == "none") {
                     $user_to = "";
-                } else {
-                    $user_to_obj = new User($con, $row['user_to']);
+                }
+                else {
+                    $user_to_obj = new User($this->con, $row['user_to']);
                     $user_to_name = $user_to_obj->getFirstAndLastName();
-                    $user_to = " dan <a href='" . $row['user_to'] . "'>" . $user_to_name . "</a>";
+                    $user_to = "to <a href='" . $row['user_to'] ."'>" . $user_to_name . "</a>";
                 }
 
-                //Yollanın hesap açıkmı
+                //Hesap açıkmı
                 $added_by_obj = new User($this->con, $added_by);
-                if ($added_by_obj->isClosed()) :
+                if($added_by_obj->isClosed()) {
                     continue;
-                endif;
+                }
 
                 $user_logged_obj = new User($this->con, $userLoggedIn);
+                if($user_logged_obj->isFriend($added_by)){
 
-                //Sadece arkadaş postları göster
-                if ($user_logged_obj->isFriend($added_by)) {
-
-                    if ($num_iterations++ < $start)
+                    if($num_iterations++ < $start)
                         continue;
 
-                    // 10 gönderi yükleyip dur
-                    if ($count > $limit) {
+
+                    //10 post çek
+                    if($count > $limit) {
                         break;
-                    } else {
+                    }
+                    else {
                         $count++;
                     }
 
-                    $user_details_query = mysqli_query($this->con, "select first_name, last_name, profile_pic from users where username='$added_by'");
+                    if($userLoggedIn == $added_by)
+                        $delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+                    else
+                        $delete_button = "";
+
+
+                    $user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
                     $user_row = mysqli_fetch_array($user_details_query);
                     $first_name = $user_row['first_name'];
                     $last_name = $user_row['last_name'];
                     $profile_pic = $user_row['profile_pic'];
 
+
                     ?>
                     <script>
-                        //Yorum bölümü aç kapa
                         function toggle<?php echo $id; ?>() {
 
                             var target = $(event.target);
@@ -122,6 +130,7 @@ class Post
 
                     $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id='$id'");
                     $comments_check_num = mysqli_num_rows($comments_check);
+
 
                     //Zamanlama
                     $date_time_now = date("Y-m-d H:i:s");
@@ -182,6 +191,7 @@ class Post
 
 								<div class='posted_by' style='color:#ACACAC;'>
 									<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+									$delete_button
 								</div>
 								<div id='post_body'>
 									$body
@@ -191,12 +201,8 @@ class Post
 								</div>
 
 								<div class='newsfeedPostOptions'>
-									
 									Yorumlar($comments_check_num)&nbsp;&nbsp;&nbsp;
-									
-								    <!-- like gelecek -->
-									<iframe src='like.php?post_id=$id'></iframe>
-									
+									<iframe src='like.php?post_id=$id' scrolling='no'></iframe>
 								</div>
 
 							</div>
@@ -204,19 +210,42 @@ class Post
 								<iframe src='comment_frame.php?post_id=$id' id='comment_iframe' frameborder='0'></iframe>
 							</div>
 							<hr>";
-
                 }
 
-            endwhile;
+                ?>
+                <script>
 
-            if ($count > $limit)
-                $str .= "<input type='hidden' class='nextPage' value='" . ($page +1) . "'>
-                          <input type='hidden' class='noMorePosts' value='false'>";
+                    $(document).ready(function() {
+
+                        $('#post<?php echo $id; ?>').on('click', function() {
+                            bootbox.confirm("Silmek istediğine emin misin?", function(result) {
+
+                                $.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result:result});
+
+                                if(result)
+                                    location.reload();
+
+                            });
+                        });
+
+
+                    });
+
+                </script>
+                <?php
+
+            } //End while loop
+
+            if($count > $limit)
+                $str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
+							<input type='hidden' class='noMorePosts' value='false'>";
             else
-                $str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: center'>Başka bir şey yok</p>";
+                $str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> Gösterilecek başka bir şey yok! </p>";
         }
+
         echo $str;
     }
+
 
     public function loadProfilePosts($data, $limit) {
 
@@ -236,7 +265,7 @@ class Post
         if(mysqli_num_rows($data_query) > 0) {
 
 
-            $num_iterations = 0; //kontrol edilen sonuç sayısı
+            $num_iterations = 0;
             $count = 1;
 
             while($row = mysqli_fetch_array($data_query)) {
@@ -250,7 +279,7 @@ class Post
                     continue;
 
 
-                //10 post yükle
+                //10 post çek sal
                 if($count > $limit) {
                     break;
                 }
@@ -293,7 +322,7 @@ class Post
                 $comments_check_num = mysqli_num_rows($comments_check);
 
 
-                //zamannnnnnnnnnn
+                //Zamanlama
                 $date_time_now = date("Y-m-d H:i:s");
                 $start_date = new DateTime($date_time); //Gönderilme saati
                 $end_date = new DateTime($date_time_now); //Şuanki saat
@@ -378,7 +407,7 @@ class Post
                     $(document).ready(function() {
 
                         $('#post<?php echo $id; ?>').on('click', function() {
-                            bootbox.confirm("Gönderiyi silmek istediğinden emin misin?", function(result) {
+                            bootbox.confirm("Silmek istediğine emin misin?", function(result) {
 
                                 $.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result:result});
 
@@ -394,19 +423,22 @@ class Post
                 </script>
                 <?php
 
-            } //while bitiş
+            } //while bitiyor
 
             if($count > $limit)
                 $str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
 							<input type='hidden' class='noMorePosts' value='false'>";
             else
-                $str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> Gösterilecek bir şey kalmadı! </p>";
+                $str .= "<input type='hidden' class='noMorePosts' value='true'><p style='text-align: centre;'> Gösterilecek başka bir şey yok! </p>";
         }
 
         echo $str;
 
 
-    }//profil load son
+    }
+
 
 
 }
+
+?>
