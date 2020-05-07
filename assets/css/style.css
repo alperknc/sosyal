@@ -1,21 +1,4 @@
-@font-face {
-    font-family: 'Bellota-LightItalic';
-    src: url('../fonts/Bellota-LightItalic.otf');
-}
-@font-face {
-    font-family: 'Bellota-BoldItalic';
-    src: url('../fonts/Bellota-BoldItalic.otf');
-}
 
-body {
-    line-height: 17px;
-    background-color: #E6EAE8;
-}
-
-a {
-    color: #20AAE5;
-    text-decoration: none;
-}
 
 .top_bar {
     width: 100%;
@@ -37,32 +20,6 @@ a {
     top: 9px;
     text-shadow: #1C8B89 0.5px 0.5px 0px;
     color: #fff;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-nav {
-    float: right;
-    right: 1px;
-    position: absolute;
-    margin: 10px;
-}
-
-nav a{
-    font-family: 'Bellota-BoldItalic', sans-serif;
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-    font-size: 23px;
-}
-
-nav a:hover {
-    border-bottom: 7px solid #fff;
-    color: #fff;
-    text-decoration: none;
-
 }
 
 .wrapper {
@@ -131,9 +88,11 @@ textarea:focus {
     height: 60px;
     border: none;
     border-radius: 3px;
-    background-color: #0f6674;
+    background-color: #fff;
+    border-right: solid #9da6af;
+    border-left: solid #9da6af;
     font-family: 'Bellota-BoldItalic', sans-serif;
-    color: #fff;
+    color: black;
     text-shadow: #73B6E2 0.5px 0.5px 0px;
     font-size: 90%;
     position: absolute;
@@ -236,8 +195,8 @@ textarea:focus {
     height: 100%;
     float: left;
     position: relative;
-    background-color: #1C8B89;
-    border-right: 10px solid #0f6674;
+    background-color: #fff;
+    border-right: 1px solid #bdc3c7;
     color: #CBEAF8;
     margin-right: 20px;
 }
@@ -246,15 +205,20 @@ textarea:focus {
     min-width: 80px;
     width: 55%;
     margin: 20px;
-    border: 5px solid #83D6FE;
+    margin-left: 43px;
+    border: 5px solid #9da6af;
     border-radius: 100px;
 }
 
 .profile_info {
     display: list-item;
-    background-color: #0f6674;
+    background-color: #fff;
+    border-bottom: 1px solid #bdc3c7;
+    color: #bdc3c7;
     width: 100%;
     padding: 10px 0 10px 0;
+    font-family: 'Bellota-BoldItalic', sans-serif;
+    font-variant-numeric: oldstyle-nums;
 }
 
 .profile_info p {
@@ -275,10 +239,10 @@ textarea:focus {
     background-color: #2ecc71;
 }
 .info {
-    background-color: #3498db;
+    background-color: #2b87ce;
 }
 .deep_blue {
-    background-color: #0043f0;
+    background-color: black;
 }
 
 .profile_left input[type="submit"] {
@@ -464,7 +428,17 @@ textarea:focus {
     top: -5px;
 }
 
+.kucult span {
+    font-size: 12px;
+}
 
+.kucult span{
+    font-size: 17px;
+}
+
+.kucult p {
+    font-size: 12px;
+}
 
 
 

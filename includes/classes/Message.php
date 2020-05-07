@@ -144,12 +144,15 @@ class Message {
 			$split = str_split($latest_message_details[1], 12);
 			$split = $split[0] . $dots;
 
-			$return_string .= "<a href='messages.php?u=$username'> <div class='user_found_messages'>
-								<img src='" . $user_found_obj->getProfilePic() . "' style='border-radius: 5px; margin-right: 5px;'>
-								" . $user_found_obj->getFirstAndLastName() . "
-								<span class='timestamp_smaller' id='grey'> " . $latest_message_details[2] . "</span>
-								<p id='grey' style='margin: 0;'>" . $latest_message_details[0] . $split . " </p>
-								</div>
+			$return_string .= "<a href='messages.php?u=$username'> 
+                            
+                                    <div class='user_found_messages'>
+                                        <img src='" . $user_found_obj->getProfilePic() . "' style='border-radius: 5px; margin-right: 5px;'>
+                                       <span class='adi'> " . $user_found_obj->getFirstAndLastName() . "</span>
+                                        <span class='timestamp_smaller' id='grey'> " . $latest_message_details[2] . "</span>
+                                        <p id='grey' style='margin: 0;'>" . $latest_message_details[0] . $split . " </p>
+								    </div>
+							 
 								</a>";
 		}
 
@@ -232,6 +235,7 @@ class Message {
 		$query = mysqli_query($this->con, "SELECT * FROM messages WHERE viewed='no' AND user_to='$userLoggedIn'");
 		return mysqli_num_rows($query);
 	}
+
 
 }
 

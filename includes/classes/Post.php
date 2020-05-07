@@ -73,7 +73,7 @@ class Post {
                 else {
                     $user_to_obj = new User($this->con, $row['user_to']);
                     $user_to_name = $user_to_obj->getFirstAndLastName();
-                    $user_to = "to <a href='" . $row['user_to'] ."'>" . $user_to_name . "</a>";
+                    $user_to = "'dan <a href='" . $row['user_to'] ."'>" . $user_to_name . "</a>'a";
                 }
 
                 //Hesap açıkmı
@@ -98,7 +98,7 @@ class Post {
                     }
 
                     if($userLoggedIn == $added_by)
-                        $delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+                        $delete_button = "<button class='delete_button btn-info' id='post$id'>X</button>";
                     else
                         $delete_button = "";
 
@@ -190,7 +190,7 @@ class Post {
 								</div>
 
 								<div class='posted_by' style='color:#ACACAC;'>
-									<a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+									<a href='$added_by'> $first_name $last_name </a> $user_to  &nbsp;&nbsp;&nbsp;&nbsp;$time_message
 									$delete_button
 								</div>
 								<div id='post_body'>
@@ -288,7 +288,7 @@ class Post {
                 }
 
                 if($userLoggedIn == $added_by)
-                    $delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+                    $delete_button = "<button class='delete_button btn-info' id='post$id'>X</button>";
                 else
                     $delete_button = "";
 
