@@ -2,9 +2,7 @@
 $fname = "";
 $lname = "";
 $em = "";
-$em2 = "";
 $password = "";
-$password2 = "";
 $date = "";
 $error_array = array(); //Hata mesajları
 
@@ -24,19 +22,11 @@ if (isset($_POST['register_button'])) :
     $em = str_replace(' ', '', $em);
     $em = ucfirst(mb_strtolower($em, 'utf8'));
     $_SESSION['reg_email'] = $em;
-    //E-Posta 2
-    $em2 = strip_tags($_POST['reg_email2']);
-    $em2 = str_replace(' ', '', $em2);
-    $em2 = ucfirst(mb_strtolower($em2, 'utf8'));
-    $_SESSION['reg_email2'] = $em2;
     //Şifre
     $password = strip_tags($_POST['reg_password']);
     //Şifre 2
-    $password2 = strip_tags($_POST['reg_password2']);
     //Gün
     $date = date("Y-m-d");
-
-    if ($em == $em2) :
 
         if (filter_var($em, FILTER_VALIDATE_EMAIL)) :
             $em = filter_var($em, FILTER_VALIDATE_EMAIL);
@@ -53,9 +43,6 @@ if (isset($_POST['register_button'])) :
             array_push($error_array, "E-Posta doğru formatta değil!<br>");
         endif;//E-Posta Format Kontrol
 
-    else :
-        array_push($error_array,"E-Posta Eşleşmedi<br>");
-    endif;//E-Posta Eşleştirme
 
     if (strlen($fname) > 25 || strlen($fname) < 2) :
         array_push($error_array,"Ad 2-25 karakter arasında olmalı!<br>");
@@ -65,14 +52,10 @@ if (isset($_POST['register_button'])) :
         array_push($error_array, "SoyAd 2-25 karakter arasında olmalı!<br>");
     endif; //Soyisim Karakter Sınırı
 
-    if ($password != $password2) :
-        array_push($error_array, "Şifreler eşleşmiyor!<br>");
-    else :
-        if (preg_match('/[^A-Za-z0-9]/', $password)) :
+    if (preg_match('/[^A-Za-z0-9]/', $password)) :
             array_push($error_array, "Şifre Türkçe Karakter İçeremez<br>");
-        endif; //Şifre karakter kontrol
+    endif; //Şifre karakter kontrol
 
-    endif;//Şifreler eşleşiyormu
 
     if (strlen($password) > 30 || strlen($password) < 5) :
         array_push($error_array, "Şifre 5-30 karakter arasında olabilir!<br>");
@@ -129,8 +112,8 @@ if (isset($_POST['register_button'])) :
 
         $query = mysqli_query($con, "insert into users values ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
 
-        array_push($error_array, "<span style='color: #14CB00;'>Kayıt başırılı Giriş yap!</span><br>");
-        header("Refresh: 3;");
+        array_push($error_array, "<span style='color: #14CB00; font-size: 25px;'>Kayıt başarılı!</span><br>");
+        header("Refresh: 1;");
 
         unset($_SESSION['reg_fname']);
         unset($_SESSION['reg_lname']);

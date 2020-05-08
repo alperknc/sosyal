@@ -3,6 +3,7 @@ require 'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
 include("includes/classes/Message.php");
+include("admin/app/settings/fullsettings.php");
 
 
 if (isset($_SESSION['username'])) {
@@ -15,7 +16,6 @@ else {
 }
 
 $message_obj = new Message($con, $userLoggedIn);
-
 //Okunmamış mesajlar
 $num_messages = $message_obj->getUnreadNumber();
 
@@ -23,7 +23,16 @@ $num_messages = $message_obj->getUnreadNumber();
 
 <html>
 <head>
-    <title>Your Welcome</title>
+    <title><?= $settings['title'] ?></title>
+
+    <?php if (isset($settings['description'])): ?>
+        <meta name="description" content="<?= $settings['description'] ?>">
+    <?php endif; ?>
+
+    <?php if (isset($settings['keywords'])): ?>
+        <meta name="keywords" content="<?= $settings['keywords'] ?>">
+    <?php endif; ?>
+
 
     <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -36,14 +45,10 @@ $num_messages = $message_obj->getUnreadNumber();
 
     <!-- CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-
     <link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css" />
-
-    <link rel="stylesheet" href="http://localhost/pixel/apps/default/main/static/css/libs/bs3/css/bootstrap.css">
-    <link rel="stylesheet" href="http://localhost/pixel/apps/default/main/static/css/styles.master.css">
-    <link rel="stylesheet" href="http://localhost/pixel/apps/default/main/static/css/bootstrap-select.min.css">
-
+    <link rel="stylesheet" href="assets/css/pixelnav/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/pixelnav/styles.master.css">
+    <link rel="stylesheet" href="assets/css/pixelnav/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 

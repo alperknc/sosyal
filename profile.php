@@ -129,6 +129,7 @@ if(isset($_POST['respond_request'])) {
       			<textarea class="form-control" name="post_body"></textarea>
       			<input type="hidden" name="user_from" value="<?php echo $userLoggedIn; ?>">
       			<input type="hidden" name="user_to" value="<?php echo $username; ?>">
+
       		</div>
       	</form>
       </div>

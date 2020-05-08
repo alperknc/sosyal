@@ -1,0 +1,34 @@
+<?php
+require 'header.php';
+require 'app/classes/User.php';
+$user = new User($con);
+
+
+
+            @$operation = $_GET["operation"];
+
+            switch ($operation) :
+
+                //------------Yönetim---------------
+                case "update":
+                    $user->userUpdate($con);
+                    break;
+                case "add":
+                    $user->userAdd($con);
+                    break;
+                case "close":
+                    $user->closeUser($con);
+                    break;
+                case "open":
+                    $user->openUser($con);
+                    break;
+                default:
+                    $user->getUsers();
+
+
+
+            endswitch;
+            ?>
+
+
+

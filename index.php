@@ -3,8 +3,47 @@ include("includes/header.php");
 
 
 if(isset($_POST['post'])){
-    $post = new Post($con, $userLoggedIn);
-    $post->submitPost($_POST['post_text'], 'none');
+    $uploadOk = 1;
+    $imageName = $_FILES['fileToUpload']['name'];
+    $errorMessage = "";
+
+    if($imageName != "") {
+        $targetDir = "assets/images/posts/";
+        $imageName = $targetDir . uniqid() . basename($imageName);
+        $imageFileType = pathinfo($imageName, PATHINFO_EXTENSION);
+
+        if($_FILES['fileToUpload']['size'] > 10000000) {
+            $errorMessage = "Dosya çok büyük";
+            $uploadOk = 0;
+        }
+
+        if(strtolower($imageFileType) != "jpeg" && strtolower($imageFileType) != "png" && strtolower($imageFileType) != "jpg") {
+            $errorMessage = "SADECE jpeg, jpg and png olabilir";
+            $uploadOk = 0;
+        }
+
+        if($uploadOk) {
+            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $imageName)) {
+                //yüklendi
+            }
+            else {
+                //yüklenmedi
+                $uploadOk = 0;
+            }
+        }
+
+    }
+
+    if($uploadOk) {
+        $post = new Post($con, $userLoggedIn);
+        $post->submitPost($_POST['post_text'], 'none', $imageName);
+    }
+    else {
+        echo "<div style='text-align:center;' class='alert alert-danger'>
+				$errorMessage
+			</div>";
+    }
+
 }
 
 
@@ -31,7 +70,8 @@ if(isset($_POST['post'])){
 </div>
 
 <div class="main_colmn column">
-    <form class="post_form" action="index.php" method="POST">
+    <form class="post_form" action="index.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="fileToUpload" id="fileToUpload">
         <textarea name="post_text" id="post_text" placeholder="Ne düşünüyorsun?"></textarea>
         <input type="submit" name="post" id="post_button" value="Gönder">
     </form>

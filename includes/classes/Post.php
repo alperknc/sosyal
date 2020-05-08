@@ -8,7 +8,7 @@ class Post {
         $this->user_obj = new User($con, $user);
     }
 
-    public function submitPost($body, $user_to) {
+    public function submitPost($body, $user_to, $imageName) {
         $date_added = date("Y-m-d H:i:s");
         $body = strip_tags($body); //removes html tags
         $body = mysqli_real_escape_string($this->con, $body);
@@ -27,7 +27,7 @@ class Post {
             } //Kendi profiline yazıyorsa
 
             // Post ekleme
-            $query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0')");
+            $query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added', 'no', 'no', '0', '$imageName')");
             $returned_id = mysqli_insert_id($this->con);
 
             //bildirimler
@@ -65,6 +65,7 @@ class Post {
                 $body = $row['body'];
                 $added_by = $row['added_by'];
                 $date_time = $row['date_added'];
+                $imagePath = $row['image'];
 
                 //kendi profiline yazıyorsa
                 if($row['user_to'] == "none") {
@@ -184,6 +185,15 @@ class Post {
                         }
                     }
 
+                    if($imagePath != "") {
+                        $imageDiv = "<div class='postedImage'>
+										<img src='$imagePath'>
+									</div>";
+                    }
+                    else {
+                        $imageDiv = "";
+                    }
+
                     $str .= "<div class='status_post' onClick='javascript:toggle$id()'>
 								<div class='post_profile_pic'>
 									<img src='$profile_pic' width='50'>
@@ -196,6 +206,7 @@ class Post {
 								<div id='post_body'>
 									$body
 									<br>
+									$imageDiv
 									<br>
 									<br>
 								</div>
@@ -273,6 +284,7 @@ class Post {
                 $body = $row['body'];
                 $added_by = $row['added_by'];
                 $date_time = $row['date_added'];
+                $imagePath = $row['image'];
 
 
                 if($num_iterations++ < $start)
@@ -374,6 +386,15 @@ class Post {
                     }
                 }
 
+                if($imagePath != "") {
+                    $imageDiv = "<div class='postedImage'>
+										<img src='$imagePath'>
+									</div>";
+                }
+                else {
+                    $imageDiv = "";
+                }
+
                 $str .= "<div class='status_post' onClick='javascript:toggle$id()'>
 								<div class='post_profile_pic'>
 									<img src='$profile_pic' width='50'>
@@ -386,6 +407,7 @@ class Post {
 								<div id='post_body'>
 									$body
 									<br>
+									$imageDiv
 									<br>
 									<br>
 								</div>

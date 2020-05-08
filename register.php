@@ -2,10 +2,21 @@
 require 'config/config.php';
 require 'includes/form_handlers/register_handler.php';
 require 'includes/form_handlers/login_handler.php';
+include("admin/app/settings/fullsettings.php");
 ?>
 
 <html>
 <head>
+
+    <title><?= $settings['title'] ?></title>
+
+    <?php if (isset($settings['description'])): ?>
+        <meta name="description" content="<?= $settings['description'] ?>">
+    <?php endif; ?>
+
+    <?php if (isset($settings['keywords'])): ?>
+        <meta name="keywords" content="<?= $settings['keywords'] ?>">
+    <?php endif; ?>
 
     <!-- Javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
