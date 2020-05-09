@@ -19,6 +19,8 @@ $message_obj = new Message($con, $userLoggedIn);
 //Okunmamış mesajlar
 $num_messages = $message_obj->getUnreadNumber();
 
+
+$route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
 ?>
 
 <html>
@@ -62,13 +64,13 @@ $num_messages = $message_obj->getUnreadNumber();
                            <!-- Logo -->
                         </a>
                     </li>
-                    <li class="pp_front_menu active" id="home_nav">
+                    <li class="pp_front_menu  <?=$route[2] == 'index.php' ? 'active' : null?>" id="home_nav">
                         <a href="index.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#66757f" class="feather feather-home"><defs xmlns="http://www.w3.org/2000/svg"><linearGradient x1="19.28%" y1="86.72%" x2="88.05%" y2="12.24%" id="home"><stop stop-color="#5cb933" offset="0%"></stop><stop stop-color="#459522" offset="49.5%"></stop><stop stop-color="#41991a" offset="100%"></stop></linearGradient></defs><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" fill="url(#home)"></path></svg> <span>Anasayfa</span>
                         </a>
                     </li>
-                    <li class="pp_front_menu exp_menu" id="explore_nav">
-                        <a href="http://localhost/pixel/explore" data-ajax="ajax_loading.php?app=explore&amp;apph=explore">
+                    <li class="pp_front_menu exp_menu <?=$route[2] == 'explore.php' ? 'active' : null?>" id="explore_nav">
+                        <a href="explore.php" data-ajax="ajax_loading.php?app=explore&amp;apph=explore">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#66757f" class="feather feather-compass"><path d="M7,17L10.2,10.2L17,7L13.8,13.8L7,17M12,11.1A0.9,0.9 0 0,0 11.1,12A0.9,0.9 0 0,0 12,12.9A0.9,0.9 0 0,0 12.9,12A0.9,0.9 0 0,0 12,11.1M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"></path></svg> <span>Keşfet</span>
                         </a>
                     </li>
@@ -92,6 +94,13 @@ $num_messages = $message_obj->getUnreadNumber();
                         <p><?php echo $user['first_name']; ?></p>
                         </a>
                     </li>
+                    <?php if ($user['admin'] == "yes") : ?>
+                    <li class="hide_head_link" title="Admin panel">
+                        <a href="admin/index.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                        </a>
+                    </li>
+                    <?php endif; ?>
                     <li>
                         <div class="dropdown notifications-list" id="get-notifications">
                             <span class="dropdown-toggle pointer" data-toggle="dropdown">

@@ -1,25 +1,7 @@
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == "POST") {
-		if (!preg_match("/^[A-Za-z0-9]/", $_POST['username']))
-			exit('<div class="flo-notification alert-error">Invalid characters in the username.</div>');
-	
-		$username = $_POST['username'];
-		$password = md5($_POST['password']);
-		
-		require('adminusers.php');
-		if (array_key_exists($username, $users)) {
-			if ($password == $users[$username]) {
-				session_start();
-				$_SESSION['loggedin'] = md5($username.$password.$salt);
-				echo('<div class="flo-notification alert-success">Login Sucessful</div>');
-				exit;
-			} else {
-				exit('<div class="flo-notification alert-error">Invalid username or password </div>');
-			}
-		} else {
-			exit('<div class="flo-notification alert-error">Invalid username or password </div>');
-		}
-	}
+require 'app/classes/Login.php';
+$login = new Login($con);
+$login->isAdmin($con);
 ?>
 <!DOCTYPE html>
 <html lang="en"> 

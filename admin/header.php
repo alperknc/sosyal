@@ -1,7 +1,11 @@
 <?php
-include 'check.php';
+include 'app/classes/config.php';
 include 'app/settings/menu.php';
 include 'app/settings/fullsettings.php';
+
+require 'app/classes/Login.php';
+$login =  new Login($con);
+$login->check();
 
 $route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
 ?>
@@ -37,9 +41,15 @@ $route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
 
           Tip 2: you can also add an image using data-image tag
       -->
-        <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                <span> Hoşgeldin: <b><?php echo $showDisplayName; ?></b> </span>
-            </a></div>
+        <div class="logo">
+            <a href="#" class="simple-text logo-normal">
+                <span> Hoşgeldin: <b><?php echo $_SESSION['username']; ?></b> </span>
+            </a>
+            <a href="http://localhost/social/" class="simple-text logo-normal">
+                <span> Siteye Git </span>
+            </a>
+
+        </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
 

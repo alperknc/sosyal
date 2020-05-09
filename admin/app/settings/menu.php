@@ -15,7 +15,11 @@ $menus = [
     ],
     'posts.php' => [
         'title' => 'Gönderiler',
-        'icon' => 'settings'
+        'icon' => 'settings',
+        'submenu' => [
+            'posts.php?operation=add' => 'Post Ekle',
+
+        ]
     ],
     'settings.php' => [
         'title' => 'Ayarlar',

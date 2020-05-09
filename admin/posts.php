@@ -10,16 +10,16 @@ switch ($operation) :
 
     //------------Yönetim---------------
     case "update":
-        $user->userUpdate($con);
+        $user->updatePost($con);
         break;
     case "add":
-        $user->userAdd($con);
+        $user->postAdd($con);
         break;
     case "close":
-        $user->closeUser($con);
+        $user->closePost($con);
         break;
     case "open":
-        $user->openUser($con);
+        $user->openPost($con);
         break;
     default:
         $user->loadPosts();
