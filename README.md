@@ -10,8 +10,8 @@ Profil <br>
   -Profile gönderi ekleme <br>
   -Kullanıcılar arası mesajlaşma<br>
   
-Yönetim Paneli
--Kullanıcılar ve postlar tam yönetim
--Excel import export
--Csv import
--Head kısmı düzenleme
+Yönetim Paneli<br>
+-Kullanıcılar ve postlar tam yönetim<br>
+-Excel import export<br>
+-Csv import<br>
+-Head kısmı düzenleme<br>
