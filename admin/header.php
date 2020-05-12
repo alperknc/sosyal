@@ -1,11 +1,12 @@
 <?php
-include 'app/classes/config.php';
-include 'app/settings/menu.php';
-include 'app/settings/fullsettings.php';
+include 'includes/classes/config.php';
+include 'includes/settings/menu.php';
+include 'includes/settings/fullsettings.php';
 
-require 'app/classes/Login.php';
+require 'includes/classes/Login.php';
 $login =  new Login($con);
 $login->check();
+
 
 $route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
 ?>
@@ -43,7 +44,7 @@ $route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
       -->
         <div class="logo">
             <a href="#" class="simple-text logo-normal">
-                <span> Hoşgeldin: <b><?php echo $_SESSION['username']; ?></b> </span>
+                <span> Hoşgeldin: <b><?php echo $login->getName(); ?></b> </span>
             </a>
             <a href="http://localhost/social/" class="simple-text logo-normal">
                 <span> Siteye Git </span>

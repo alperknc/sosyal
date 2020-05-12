@@ -62,7 +62,16 @@ class Login
         }
     }
 
+    public function getName() {
+        if (isset($_SESSION['username'])){
+            $username = $_SESSION['username'];
 
+            $check_database_query = mysqli_query($this->con, "select * from users where username='$username' and admin='yes'");
+            $rowuser = mysqli_fetch_array($check_database_query);
+            $firstname = $rowuser['first_name'];
+        }
+        return $firstname;
+    }
 
 
 

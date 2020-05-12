@@ -3,7 +3,7 @@ require 'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
 include("includes/classes/Message.php");
-include("admin/app/settings/fullsettings.php");
+include("admin/includes/settings/fullsettings.php");
 
 
 if (isset($_SESSION['username'])) {

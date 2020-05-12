@@ -2,32 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a81bd6eb-5803-46cd-92a5-8f7cb1be00c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/app/classes/Login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb681ec1c9a9WhatsApp Image 2020-05-08 at 13.40.36.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6bd79de10findir.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6bd7e71b5eindir.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6bd8260cbdindir.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6bdb2338a25c8d53e445d2a09e00968c8c.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6dd252d27dWhatsApp Image 2019-05-11 at 17.06.55.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6dde070314WhatsApp Image 2019-05-11 at 17.06.55.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6de14497e4WhatsApp Image 2019-05-11 at 17.06.55.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6ed739bd31WhatsApp Image 2019-05-29 at 00.23.01.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6ede387786WhatsApp Image 2019-05-29 at 00.39.14.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6edfbdc029WhatsApp Image 2019-05-11 at 17.06.55.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5eb6ee1d142f5WhatsApp Image 2019-05-29 at 00.23.01.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/profile_pics/alper_akincifb8a2b5baf6df38970b9ba286c42789bn.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/profile_pics/memati_bas4ad4d9b56bbd5fef5e7ea6d86964b535n.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/explore.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/excel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/excelread.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/files/liste.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/importcsv.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/includes/classes/Dashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/includes/classes/Excel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/includes/classes/SimpleXLSX.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/liste.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/postexcel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/userdetails.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8b94ce16EX0dijOWAAA5k7i.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8c23f9dcEX06jn2XsAADf-Y.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8e5b1ec1EXqC6x-XYAE7YP0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8ea250bfEXqC6x-XYAE7YP0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8f2b79ebEXrGUyGX0AUdeuK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac93712ed4EXsDBrKX0AcveNl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac93a804d6EXw0V36XQAAAlWr.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/profile_pics/yusuf_alyuvar304077500b5f0c77adf2a2e62383233cn.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/registers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/classes/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/classes/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/settings/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/settings/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/adduser.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/adminusers.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/classes/Dashboard.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/classes/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/classes/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/classes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/settings/fullsettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/settings/fullsettings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/settings/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/settings/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/material-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/material-dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/css/material-dashboard.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/material-dashboard.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/js/material-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/material-dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/assets/scss/material-dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/scss/material-dashboard.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/check.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/check.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/settings.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/handlers/ajax_friend_search.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,11 +91,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\social\admin\app\classes" />
+      <recent name="C:\xampp\htdocs\social\admin" />
       <recent name="C:\xampp\htdocs\social\yonetim" />
       <recent name="C:\xampp\htdocs\social\yonetim\app\settings" />
       <recent name="C:\xampp\htdocs\social\yonetim\app\view\static" />
-      <recent name="C:\xampp\htdocs\social\yonetim\app\view" />
-      <recent name="C:\xampp\htdocs\social\yonetim\app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\social" />
@@ -114,7 +132,16 @@
       <workItem from="1588846344972" duration="18080000" />
       <workItem from="1588867122307" duration="14799000" />
       <workItem from="1588929961005" duration="21461000" />
-      <workItem from="1589028224301" duration="15021000" />
+      <workItem from="1589028224301" duration="15273000" />
+      <workItem from="1589063912025" duration="6643000" />
+      <workItem from="1589101033409" duration="270000" />
+      <workItem from="1589101547126" duration="38460000" />
+      <workItem from="1589195755586" duration="2010000" />
+      <workItem from="1589199969033" duration="71000" />
+      <workItem from="1589200136082" duration="599000" />
+      <workItem from="1589276395677" duration="1230000" />
+      <workItem from="1589286273358" duration="15331000" />
+      <workItem from="1589321911402" duration="280000" />
     </task>
     <servers />
   </component>
@@ -149,24 +176,32 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588527380825" />
+    <state x="403" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589115831402">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="403" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1589115831402" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588869552076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588869552076" />
-    <state x="365" y="188" key="FileChooserDialogImpl" timestamp="1589028435395">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589116028837">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589116028837" />
+    <state x="365" y="188" key="FileChooserDialogImpl" timestamp="1589277064850">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="365" y="188" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1024.768@0.0.1536.824" timestamp="1588793722767" />
-    <state x="365" y="188" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589028435395" />
-    <state x="1020" y="247" key="NewPhpClassDialog" timestamp="1589028792750">
+    <state x="365" y="188" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589277064850" />
+    <state x="1020" y="247" key="NewPhpClassDialog" timestamp="1589104552508">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="1020" y="247" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1589028792750" />
-    <state x="1010" y="335" key="NewPhpFileDialog" timestamp="1589047193336">
+    <state x="1020" y="247" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1589104552508" />
+    <state x="1010" y="335" key="NewPhpFileDialog" timestamp="1589299830042">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="1010" y="335" key="NewPhpFileDialog/0.0.1536.824/1920.0.1024.768@0.0.1536.824" timestamp="1588781968877" />
-    <state x="1010" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589047193336" />
+    <state x="1010" y="335" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589299830042" />
     <state x="555" y="54" key="SettingsEditor" timestamp="1588619973398">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -179,10 +214,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588939451679" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589032226686">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589144010358">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589032226686" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589144010358" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -191,6 +226,15 @@
           <url>file://$PROJECT_DIR$/messages.php</url>
           <line>54</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/admin/includes/classes/Post.php</url>
+          <line>21</line>
+          <properties>
+            <option name="className" value="\Post" />
+            <option name="methodName" value="loadPosts" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

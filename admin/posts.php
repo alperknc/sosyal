@@ -1,6 +1,6 @@
 <?php
 require 'header.php';
-require 'app/classes/Post.php';
+require 'includes/classes/Post.php';
 $user = new Post($con);
 
 
@@ -9,6 +9,9 @@ $user = new Post($con);
 switch ($operation) :
 
     //------------Yönetim---------------
+    case "search":
+        $user->loadPosts($con);
+        break;
     case "update":
         $user->updatePost($con);
         break;
@@ -29,5 +32,23 @@ switch ($operation) :
 endswitch;
 ?>
 
-
+<script type="text/javascript">
+    $(function(){
+        $('a[rel="yukleme"]').click(function(e){
+            pageurl = $(this).attr('href');
+            $.ajax({url:pageurl,success: function(data){
+                    $('body').html(data).find("body").html();
+                }});
+            if(pageurl!=window.location){
+                window.history.pushState({path:pageurl},'',pageurl);
+            }
+            return false;
+        });
+    });
+    $(window).bind('popstate', function() {
+        $.ajax({url:location.pathname,success: function(data){
+                $('body').html(data).find("body").html();
+            }});
+    });
+</script>
 

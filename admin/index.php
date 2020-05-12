@@ -1,6 +1,6 @@
 <?php
     require 'header.php';
-    require 'app/classes/Dashboard.php';
+    require 'includes/classes/Dashboard.php';
     $functions = new Dashboard($con);
 ?>
 
@@ -11,7 +11,7 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">content_copy</i>
+                            <i class="material-icons">perm_identity</i>
                         </div>
                         <p class="card-category">Kayıtlı Kullanıcı</p>
                         <h3 class="card-title"> <?php $functions->getUserCount();?>
@@ -21,7 +21,7 @@
                     <div class="card-footer">
                         <div class="stats">
                             <i class="material-icons text-danger">warning</i>
-                            <a href="javascript:;">Get More Space...</a>
+                            <a href="javascript:;"></a>
                         </div>
                     </div>
                 </div>
@@ -30,14 +30,14 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">store</i>
+                            <i class="material-icons">ballot</i>
                         </div>
                         <p class="card-category">Toplam Gönderi</p>
                         <h3 class="card-title"><?php $functions->getPostCount();?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">date_range</i> Last 24 Hours
+                            <i class="material-icons">date_range</i>
                         </div>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">favorite</i>
                         </div>
                         <p class="card-category">Toplam Beğeni</p>
                         <h3 class="card-title"><?php $functions->getLikeCount(); ?></h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">local_offer</i> Tracked from Github
+                            <i class="material-icons">local_offer</i>
                         </div>
                     </div>
                 </div>
@@ -69,9 +69,73 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">update</i> Just Updated
+                            <i class="material-icons">update</i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <span class="nav-tabs-title"></span>
+                            <ul class="nav nav-tabs" data-tabs="tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#profile" data-toggle="tab">
+                                        <i class="material-icons">insert_comment</i> Son 5 Beğeni
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                            <table class="table">
+                                <tbody>
+
+                                </tr>
+
+                                    <?php $functions->getLastLikes(); ?>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title">Son 5 Yorum</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-warning">
+                        <tr><th>Sahibi</th>
+                            <th>Yorum</th>
+                        </tr></thead>
+                        <tbody>
+                        <?php $functions->getLastComments(); ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

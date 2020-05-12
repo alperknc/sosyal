@@ -20,8 +20,20 @@ class User
 
     public function getUsers()
     {
+         @$search = $_POST["searchbutton"];
+         @$usersearch = $_POST["search"];
+
+            if ($search):
+                $my_query = mysqli_query($this->con, "select * from users where first_name LIKE '%$usersearch%' or last_name LIKE '%$usersearch%' or username LIKE '%$usersearch%' order by id desc");
+                $num_rowsearch = mysqli_num_rows($my_query);
+                if (!$num_rowsearch > 0):
+                    $my_query = mysqli_query($this->con, "select * from users order by id desc");
+                endif;
+            else:
+                $my_query = mysqli_query($this->con, "select * from users order by id desc");
+            endif;
+
         $str ="";
-        $my_query = mysqli_query($this->con, "select * from users order by id desc");
 
         while ($row = mysqli_fetch_array($my_query)):
             $id = $row['id'];
@@ -49,18 +61,34 @@ class User
                 $closed_text = "Kapalı";
             endif;
 
+            ?>
+
+
+
+            <?php
+
 
             $firststr = "
-
-            <div class='card'>
+        <div id='getusers'>
+            <div class='card' id='veri'>
                 <div class='card-header card-header-primary'>
                     <div class='row'>  
-                        <div class='col s12 m4 l10'>
+                        <div class='col-md-2'>
                             <h4 class='card-title '>Kullanıcı Listesi</h4>
                             <p class='card-category'> Tüm kullanıcılarını burada görebilirsin</p> 
                         </div> 
-                        <div class='col s12 m4 l2> ' style='position: relative; left: 380px;'>
-                                <a href='users.php?operation=add' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 18px;'>Yeni Kullanıcı<div class='ripple-container'></div></a>
+                        <div class='col-md-10'>
+                            <div class='row'>
+                                <form action='users.php?operation=search' method='post'>
+                                    <input type = 'search' name = 'search'>
+                                    <input type='submit' name='searchbutton' class='btn' value='ARA' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px;'>
+                                </form>
+                                
+                        
+                                <a href='excel.php' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px; left: 400px'>Excel'e Aktar<div class='ripple-container'></div></a>
+ 
+                                <a rel='yukleme' href='users.php?operation=add' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px; left: 400px'>Yeni Kullanıcı<div class='ripple-container'></div></a>
+                            </div>
                         </div>
                     </div>   
                 </div>
@@ -104,7 +132,7 @@ class User
             $str .= "
                             <tr>
                                 <td>
-                                    $id
+                                    <a href='userdetails.php?operation=user&id=" .$id . "' >$id</a> 
                                 </td>
                                 <td>
                                     $first_name "." $last_name
@@ -128,38 +156,105 @@ class User
                                     $closed_text
                                 </td>
                                 <td>
-                                    <a href='users.php?operation=update&id=" .$id . "' class='btn '  style='background-color: #ab47bc  '>Düzenle<div class='ripple-container'></div></a>
+                                    <a rel='yukleme' href='users.php?operation=update&id=" .$id . "' class='btn '  style='background-color: #ab47bc  '>Düzenle<div class='ripple-container'></div></a>
                                 </td>
-                                <td>
-                                    <a href='users.php?operation=" . $operation . "&id=" .$id . "' class='btn '  style='background-color: ". $color ."'> $text <div class='ripple-container'></div></a>
+                                <td> 
+                                        
+                                   <a rel='yukleme' href='users.php?operation=" . $operation . "&id=" .$id . "' class='btn ' id='btndeleted1'  style='background-color: ". $color ."'> $text <div class='ripple-container'></div></a>
                                 </td>
                             </tr>
                             ";
             $secondstr = '</tbody>
                         </table>
+                        
                     </div>
                 </div>
-            </div>>';
+            </div>  </div>';
 
         endwhile;
         echo $firststr . $str . $secondstr;
     }
 
-    public function getUser($user)
+    public function getUser($con)
     {
-        $row = $this->myQuery($this->con, "select * from users where id=$user");
-        $id = $row['id'];
-        $first_name = $row['first_name'];
-        $last_name = $row['last_name'];
-        $email = $row['email'];
-        $signup_date = $row['signup_date'];
-        $profile_pic = $row['profile_pic'];
-        $num_posts = $row['num_posts'];
-        $num_likes = $row['num_likes'];
-        $user_closed = $row['user_closed'];
-        $friend_array = $row['friend_array'];
+            $id = $_GET["id"];
+            $query = mysqli_query($con, "select * from users where id = $id");
+            $row = mysqli_fetch_array($query);
 
-        echo $first_name . " " . $last_name . "<br>";
+            $id = $row['id'];
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
+            $fullname = $first_name . $last_name;
+            $username = $row['username'];
+            $email = $row['email'];
+            $signup_date = $row['signup_date'];
+            $profile_pic = $row['profile_pic'];
+            $num_posts = $row['num_posts'];
+            $num_likes = $row['num_likes'];
+            $user_closed = $row['user_closed'];
+            $friend_array = $row['friend_array'];
+
+            $profile = "
+                <div class='card-avatar'>
+                        <a href='#'>
+                            <img src='../" .$profile_pic. "' width='44' height='44'>
+                        </a>
+                    </div>
+                    <div class='card-body'>
+                        <h4 class='card-title'>$fullname</h4>
+                        <p class='card-description'>
+                            Gönderi Sayısı: $num_posts  <br>
+                            Beğeni Sayısı: $num_likes
+                        </p>
+                        <a href='../". $username ."' class='btn btn-primary btn-round'>Profili</a>
+                    </div>
+            ";
+
+            $queryposts = mysqli_query($con, "select * from posts where added_by='$username' order by id desc");
+
+            $str = "";
+            while ($rowposts = mysqli_fetch_array($queryposts)) {
+                $postid = $rowposts['id'];
+                $body = $rowposts['body'];
+                $date = $rowposts['date_added'];
+                $deleted = $rowposts['deleted'];
+                $likes = $rowposts['likes'];
+
+                $str .= "<tr>
+                                                <td>
+                                                    $postid
+                                                </td>
+                                                <td>
+                                                    $body 
+                                                </td>
+                                                <td>
+                                                    $date
+                                                </td>
+                                                <td>
+                                                    $deleted
+                                                </td>
+                                                <td class='text-primary'>
+                                                    $likes
+                                                </td>
+                                            </tr>";
+            }
+            echo $str;
+            echo "
+                </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-4'>
+                <div class='card card-profile'>
+
+                        
+            ";
+            echo $profile;
     }
 
     public function userUpdate($con) {
@@ -241,7 +336,7 @@ class User
           echo  '
                 <div class="col-md-12 table-light border-bottom"><h4>KULLANICI GÜNCELLE</h4></div>
                 <div class="col-md-12 table-light">Adı<input type = "text" name = "first_name" class = "form-control mt-3" value = "'.$aktar["first_name"].'"/></div>
-                <div class="col-md-12 table-light">Soy Adı<input type = "text" name = "last_name" class = "form-control mt-3" value = "'.$aktar["last_name"].'"/></div>
+                <div class="col-md-12 table-light">Soyadı<input type = "text" name = "last_name" class = "form-control mt-3" value = "'.$aktar["last_name"].'"/></div>
                 <div class="col-md-12 table-light">Email<input type = "email" name = "email" class = "form-control mt-3" value = "'.$aktar["email"].'"/></div>
                 <div class="col-md-12 table-light">Kayıt Tarihi<input type = "text" name = "signup_date" class = "form-control mt-3" value = "'.$aktar["signup_date"].'"/></div>
                 
@@ -254,7 +349,7 @@ class User
                 <div class="col-md-12 table-light">Beğeni Sayısı<input type = "text" name = "num_likes" class = "form-control mt-3" value = "'.$aktar["num_likes"].'"/></div>
                 <div class="col-md-12 table-light">Durum<input type = "text" name = "user_closed" class = "form-control mt-3" value = "'.$aktar["user_closed"].'"/></div>
                 <div class="col-md-12 table-light">
-                <a href="users.php" class="btn" style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;" >Geri Dön</a>
+                <a rel="yukleme" href="users.php" class="btn" style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;" >Geri Dön</a>
                 <input name = "button" value = "Güncelle" type = "submit" class = "btn btn-success mt-3 mb-3" style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;" /></div>
                 <input type = "hidden" name = "id" value = "'.$id.'"/>
             </form></div>';
@@ -407,7 +502,7 @@ class User
                                    endif;
                             ?>
 
-                            <div class="col-md-12 table-light">Soy Adı<input type = "text" name = "last_name" class = "form-control mt-3" value="<?php if (isset($_SESSION['last_name'])) : echo  $_SESSION['last_name']; endif; ?>"></div>
+                            <div class="col-md-12 table-light">Soyadı<input type = "text" name = "last_name" class = "form-control mt-3" value="<?php if (isset($_SESSION['last_name'])) : echo  $_SESSION['last_name']; endif; ?>"></div>
 
                             <?php if (in_array("SoyAd 2-25 karakter arasında olmalı!<br>", $error_array)) :
                                     echo "SoyAd 2-25 karakter arasında olmalı!<br>";
@@ -436,7 +531,7 @@ class User
                                         ?>
 
                             <div class="col-md-12 table-light">
-                            <a href="users.php" class="btn" style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;" >Geri Dön</a>
+                            <a rel='yukleme' href="users.php" class="btn" style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;" >Geri Dön</a>
                             <input name = "button" value = "Ekle" type = "submit" class = "btn btn-success mt-3 mb-3"  style="background-color: #8e24aa ; box-shadow: 3px 3px 4px #000;"/></div>
                         </form>
             </div>
@@ -448,7 +543,8 @@ class User
 
         if ($id != "" && is_numeric($id)):
             mysqli_query($con, "update users set user_closed = 'yes' where id = $id");
-            header("Location: users.php");
+            //header("Location: users.php");
+            $this->getUsers();
         endif;
     }
 
@@ -457,7 +553,8 @@ class User
 
         if ($id != "" && is_numeric($id)):
             mysqli_query($con, "update users set user_closed = 'no' where id = $id");
-            header("Location: users.php");
+            //header("Location: users.php");
+            $this->getUsers();
         endif;
     }
 

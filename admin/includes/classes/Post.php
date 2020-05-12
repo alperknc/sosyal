@@ -22,7 +22,19 @@ class Post
     public function loadPosts() {
         $operation = "";
         $str ="";
-        $my_query = mysqli_query($this->con, "select * from posts order by id desc");
+        @$search = $_POST["searchbutton"];
+        @$usersearch = $_POST["search"];
+
+        if ($search):
+            $my_query = mysqli_query($this->con, "select * from posts where added_by LIKE '%$usersearch%' order by id desc");
+            $num_rowsearch = mysqli_num_rows($my_query);
+            if (!$num_rowsearch > 0):
+                $my_query = mysqli_query($this->con, "select * from posts order by id desc");
+            endif;
+        else:
+            $my_query = mysqli_query($this->con, "select * from posts order by id desc");
+        endif;
+
 
         while ($row = mysqli_fetch_array($my_query)):
             $id = $row['id'];
@@ -56,8 +68,18 @@ class Post
                             <h4 class='card-title '>Gönderi Listesi</h4>
                             <p class='card-category'> Tüm gönderileri burada görebilirsin</p> 
                         </div> 
-                        <div class='col s12 m4 l2> ' style='position: relative; left: 380px;'>
-                                <a href='posts.php?operation=add' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 18px;'>Yeni Gönderi<div class='ripple-container'></div></a>
+                            <div class='col-md-10'>
+                            <div class='row'>
+                                <form action='posts.php?operation=search' method='post'>
+                                    <input type = 'search' name = 'search'>
+                                    <input type='submit' name='searchbutton' class='btn' value='ARA' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px;'>
+                                </form>
+                                
+                        
+                                <a href='postexcel.php' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px; left: 400px'>Excel'e Aktar<div class='ripple-container'></div></a>
+ 
+                                <a rel='yukleme' href='posts.php?operation=add' class='btn'  id='addbtn' style='background-color: #fff; box-shadow: 3px 3px 4px #000; color: #8e24aa ; font-size: 15px; left: 400px'>Yeni Gönderi<div class='ripple-container'></div></a>
+                            </div>
                         </div>
                     </div>   
                 </div>
@@ -120,10 +142,10 @@ class Post
                                     $closed_text
                                 </td>
                                 <td>
-                                    <a href='posts.php?operation=update&id=" .$id . "' class='btn '  style='background-color: #ab47bc  '>Düzenle<div class='ripple-container'></div></a>
+                                    <a rel='yukleme' href='posts.php?operation=update&id=" .$id . "' class='btn '  style='background-color: #ab47bc  '>Düzenle<div class='ripple-container'></div></a>
                                 </td>
                                 <td>
-                                    <a href='posts.php?operation=" . $operation . "&id=" .$id . "' class='btn '  style='background-color: ". $color ."'> $text <div class='ripple-container'></div></a>
+                                    <a rel='yukleme' href='posts.php?operation=" . $operation . "&id=" .$id . "' class='btn '  style='background-color: ". $color ."'> $text <div class='ripple-container'></div></a>
                                 </td>
                             </tr>
                             ";
@@ -131,7 +153,7 @@ class Post
                         </table>
                     </div>
                 </div>
-            </div>>';
+            </div>';
 
         endwhile;
         echo $firststr . $str . $secondstr;
@@ -183,14 +205,18 @@ class Post
 
             //Kullanıcı varmı kontrol edilecek**
 
-            if ($body == "" || $added_by == "" || $user_to == "") :
+            if ($body == "" || $added_by == "") :
                 echo "Boş olamaz";
 
             else:
                 if ($imageName != "") {
                     $query = mysqli_query($this->con, "insert into posts values ('', '$body', '$added_by', '$user_to', '$date','no', 'no', '0', '$imageName')");
                     header("Location: posts.php");
-                } else {
+                } else if($user_to=="") {
+                    $query = mysqli_query($this->con, "insert into posts values ('', '$body', '$added_by', 'none', '$date','no', 'no', '0', '$imageName')");
+                    header("Location: posts.php");
+                }
+                else {
                     $query = mysqli_query($this->con, "insert into posts values ('', '$body', '$added_by', '$user_to', '$date','no', 'no', '0', '')");
                     header("Location: posts.php");
                 }
@@ -208,7 +234,7 @@ class Post
         <form action = "<?php $_SERVER['PHP_SELF'] ?>" method = "post" enctype="multipart/form-data">
         <?php
         echo  '
-                <div class="col-md-12 table-light border-bottom"><h4>KULLANICI GÜNCELLE</h4></div>
+                <div class="col-md-12 table-light border-bottom"><h4>GÖNDERİ GÜNCELLE</h4></div>
                 <div class="col-md-12 table-light">Yazı<input type = "text" name = "body" class = "form-control mt-3" value = ""/></div>
                 <div class="col-md-12 table-light">Ekleyen<input type = "text" name = "added_by" class = "form-control mt-3" value = ""/></div>
                 <div class="col-md-12 table-light">Kime<input type = "text" name = "user_to" class = "form-control mt-3" value = ""/></div>
@@ -298,7 +324,7 @@ class Post
     <form action = "<?php $_SERVER['PHP_SELF'] ?>" method = "post" enctype="multipart/form-data">
         <?php
         echo  '
-                <div class="col-md-12 table-light border-bottom"><h4>KULLANICI GÜNCELLE</h4></div>
+                <div class="col-md-12 table-light border-bottom"><h4>GÖNDERİ GÜNCELLE</h4></div>
                 <div class="col-md-12 table-light">Yazı<input type = "text" name = "body" class = "form-control mt-3" value = "'.$aktar["body"].'"/></div>
                 <div class="col-md-12 table-light">Ekleyen<input type = "text" name = "added_by" class = "form-control mt-3" value = "'.$aktar["added_by"].'"/></div>
                 <div class="col-md-12 table-light">Kime<input type = "text" name = "user_to" class = "form-control mt-3" value = "'.$aktar["user_to"].'"/></div>
