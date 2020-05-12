@@ -2,50 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a81bd6eb-5803-46cd-92a5-8f7cb1be00c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/excel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/excelread.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/files/liste.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/importcsv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/includes/classes/Dashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/includes/classes/Excel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/includes/classes/SimpleXLSX.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/liste.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/postexcel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/userdetails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8b94ce16EX0dijOWAAA5k7i.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8c23f9dcEX06jn2XsAADf-Y.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8e5b1ec1EXqC6x-XYAE7YP0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8ea250bfEXqC6x-XYAE7YP0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac8f2b79ebEXrGUyGX0AUdeuK.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac93712ed4EXsDBrKX0AcveNl.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/posts/5ebac93a804d6EXw0V36XQAAAlWr.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/profile_pics/yusuf_alyuvar304077500b5f0c77adf2a2e62383233cn.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/registers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adduser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adminusers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/Dashboard.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/classes/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/classes/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/settings/fullsettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/settings/fullsettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/settings/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/settings/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/css/material-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/material-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/css/material-dashboard.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/css/material-dashboard.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/js/material-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/js/material-dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/assets/scss/material-dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/admin/assets/scss/material-dashboard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/check.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/classes/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/handlers/ajax_friend_search.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social.sql" beforeDir="false" afterPath="$PROJECT_DIR$/social.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +100,7 @@
       <workItem from="1589200136082" duration="599000" />
       <workItem from="1589276395677" duration="1230000" />
       <workItem from="1589286273358" duration="15331000" />
-      <workItem from="1589321911402" duration="280000" />
+      <workItem from="1589321911402" duration="1199000" />
     </task>
     <servers />
   </component>

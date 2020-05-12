@@ -90,7 +90,7 @@ if(isset($_POST['respond_request'])) {
 
     <ul class="nav nav-tabs" role="tablist" id="profileTabs">
         <li role="presentation" class="active"><a href="#newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Gönderiler</a></li>
-        <li role="presentation"><a href="#messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Mesajlar</a></li>
+        <li role="presentation"><a href="#messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Bio</a></li>
     </ul>
 
     <div class="tab-content">
