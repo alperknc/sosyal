@@ -110,7 +110,8 @@ if (isset($_POST['register_button'])) :
             $profile_pic = "assets/images/profile_pics/default/head_pomegranate.png";
         endif; // Rasgele profil foto
 
-        $query = mysqli_query($con, "insert into users values ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
+        $query = mysqli_query($con, "insert into users values ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',', 'no')");
+        //$query = mysqli_query($con, "insert into users values ('', '$fname', '$lname', '$username', '$em', '$password', '$date', '$profile_pic', '0', '0', 'no', ',')");
 
         array_push($error_array, "<span style='color: #14CB00; font-size: 25px;'>Kayıt başarılı!</span><br>");
         header("Refresh: 1;");
